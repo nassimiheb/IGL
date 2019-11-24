@@ -101,8 +101,8 @@ class App extends Component {
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
-          <Route path="/create1" component={Home} />
-          <Route path="/affiche" component={Affiche} />
+          <Route path="/dash" component={Home} />
+          <Route path="/afficher" component={Affiche} />
           <Route path="/modifier/:id" component={Modifier} />
           <Route path="/done" component={Ajoute} />
           </div>
