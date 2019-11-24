@@ -5,7 +5,110 @@ import "react-datepicker/dist/react-datepicker.css";
 import '../App.css';
 export default class CreerEtudiant extends Component
 {
-  
+    constructor(props) {
+        super(props);
+        this.onChangeMatricule=this.onChangeMatricule.bind(this);
+        this.onChangenom=this.onChangenom.bind(this);
+        this.onChangeprenom=this.onChangeprenom.bind(this);
+        this.onChangedateNaissance=this.onChangedateNaissance.bind(this);
+        this.onChangelieuNaissance=this.onChangelieuNaissance.bind(this);
+        this.onChangepromo=this.onChangepromo.bind(this);
+        this.onChangegroupe=this.onChangegroupe.bind(this);
+        this.onChangetel=this.onChangetel.bind(this);
+        this.onChangemail=this.onChangemail.bind(this);
+        this.onChangeadresse=this.onChangeadresse.bind(this);
+        this.onSubmit=this.onSubmit.bind(this);
+        this.state={
+            matricule: 0,
+            nom:'',
+            prenom:'',
+            dateNaissance: new Date(),
+            lieuNaissance:'',            
+            groupe:'',
+            tel:'',
+            mail:'',
+            promo:'',
+            adresse:'',
+    
+        }        
+    }
+    onChangeMatricule(e){
+        this.setState({
+            matricule:e.target.value
+        })
+    }
+    onChangenom(e){
+        this.setState({
+            nom:e.target.value
+        });
+    }
+    onChangeprenom(e){
+        this.setState({
+            prenom:e.target.value
+        });
+    }
+    onChangedateNaissance(Date){
+        this.setState({
+            dateNaissance:Date
+        });
+    }
+    
+    onChangelieuNaissance(e){
+        this.setState({
+            lieuNaissance:e.target.value
+        });
+    }
+    onChangepromo(e){
+        this.setState({
+            promo:e.target.value
+        });
+    }
+    onChangegroupe(e){
+        this.setState({
+            groupe:e.target.value
+        });
+    }
+    onChangetel(e){
+        this.setState({
+            tel:e.target.value
+        });
+    }
+    onChangemail(e){
+        this.setState({
+            mail:e.target.value
+        });
+    }
+    onChangeadresse(e){
+        this.setState({
+            adresse:e.target.value
+        });
+    }
+    onSubmit(e)
+    {
+        e.preventDefault();
+        const user ={
+            matricule:this.state.matricule,
+           /* nom:this.state.nom,
+            prenom:this.state.prenom,
+            dateNaissance: this.state.dateNaissance,
+            lieuNaissance: this.state.lieuNaissance,
+           */
+            groupe:this.state.groupe,
+            tel:this.state.tel,
+            mail:this.state.mail,
+            adresse:this.state.adresse,
+        }
+           if (this.refs.userInput) {
+            user.groupe=this.state.promo +this.refs.userInput.value;
+            
+        }
+        if (this.state.promo!="PROMO"){
+            console.log(user);
+            /*axios.post('http//localhost:5000/students/add',etudiant)
+                .then(res => console.log(res.data));
+*/
+            window.location="/";}
+    }
     render()
     {
         return (
