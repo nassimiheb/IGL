@@ -39,64 +39,64 @@ class App extends Component {
     return (
       <Router>
       <div className="App">
-       <nav className="navbar navbar-default no-margin navi">
-                <div className="navbar-header fixed-brand">
-                    <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
-                      <span className="glyphicon glyphicon-th-large" aria-hidden="true"></span>
-                    </button>
-                    <a className="navbar-brand" href="/"><FontAwesomeIcon icon={faHome} /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOME</a>
-                </div>
- 
-                
-                
-    <div className="container h-100" id ="container1">
-      <div className="d-flex justify-content-center h-100">
-        <div className="searchbar">
-          <input className="search_input" type="text" name="" placeholder="Search..."/>
-          <a href="/" className="search_icon"><FontAwesomeIcon icon={faSearch} /></a>
-        </div>
-      </div>
-    </div>
-    <a href="/" className="search_icon1"> <img className="imgNav" src ={icon23}/></a>
-    <a href="/" className="search_icon1"> <img className="imgNav" src ={icon23}/></a>
-    <a href="/" className="search_icon1"> <img className="imgNav" src ={icon24}/></a>
-    <a href="/" className="search_icon1"> <img className="imgNav" src ={icon26}/></a> 
-   
+          <nav className="navbar navbar-default no-margin navi">
+                    <div className="navbar-header fixed-brand">
+                        <button type="button" className="navbar-toggle collapsed" data-toggle="collapse"  id="menu-toggle">
+                          <span className="glyphicon glyphicon-th-large" aria-hidden="true"></span>
+                        </button>
+                        <a className="navbar-brand" href="/"><FontAwesomeIcon icon={faHome} /> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;HOME</a>
+                    </div>
     
-
-    </nav>
-    <div id="wrapper">
-        <div id="sidebar-wrapper">
-            <ul className="sidebar-nav nav-pills nav-stacked" id="menu">
- 
-                <li className="">
-                <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon1}/></span> <br></br></a>
-                       
-                </li>
-                <li>
-                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon2}/></span> <br></br></a>
-    
-                </li>
-                <li>
-                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon3}/></span><br></br></a>
-                </li>
-                <li>
-                <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon4}/></span><br></br></a>
-                </li>
-                <li>
-                <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon5}/></span><br></br></a>
-                </li>
-                <li>
-                <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon6}/></span><br></br></a>
-                </li>
-                <li>
-                <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon8}/></span><br></br></a>
-                </li>
-            </ul>
-        </div>
+                    
+                    
+          <div className="container h-100" id ="container1">
+            <div className="d-flex justify-content-center h-100">
+              <div className="searchbar">
+                <input className="search_input" type="text" name="" placeholder="Search..."/>
+                <a href="/" className="search_icon"><FontAwesomeIcon icon={faSearch} /></a>
+              </div>
+            </div>
+          </div>
+        <a href="/" className="search_icon1"> <img className="imgNav" src ={icon23}/></a>
+        <a href="/" className="search_icon1"> <img className="imgNav" src ={icon23}/></a>
+        <a href="/" className="search_icon1"> <img className="imgNav" src ={icon24}/></a>
+        <a href="/" className="search_icon1"> <img className="imgNav" src ={icon26}/></a> 
+      
         
-        <script src="script.js"></script> 
-      </div>
+
+        </nav>
+        <div id="wrapper">
+            <div id="sidebar-wrapper">
+                <ul className="sidebar-nav nav-pills nav-stacked" id="menu">
+    
+                    <li className="">
+                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon1}/></span> <br></br></a>
+                          
+                    </li>
+                    <li>
+                        <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon2}/></span> <br></br></a>
+        
+                    </li>
+                    <li>
+                        <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon3}/></span><br></br></a>
+                    </li>
+                    <li>
+                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon4}/></span><br></br></a>
+                    </li>
+                    <li>
+                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon5}/></span><br></br></a>
+                    </li>
+                    <li>
+                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon6}/></span><br></br></a>
+                    </li>
+                    <li>
+                    <a href="/"><span className="fa-stack fa-lg pull-left"><img className="imgNav" src ={icon8}/></span><br></br></a>
+                    </li>
+                </ul>
+            </div>
+            
+            <script src="script.js"></script> 
+          </div>
     
           <Route path="/" exact component={TodosList} />
           <Route path="/edit/:id" component={EditTodo} />
