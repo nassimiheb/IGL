@@ -29,7 +29,7 @@ export default class CreerEtudiant extends Component
             mail:'',
             promo:'',
             adresse:'',
-    
+            errorMessage:'',
         }        
     }
     onChangeMatricule(e){
@@ -85,29 +85,39 @@ export default class CreerEtudiant extends Component
     }
     onSubmit(e)
     {
+        let erreurMessage='';
         e.preventDefault();
         const user ={
             matricule:this.state.matricule,
-           /* nom:this.state.nom,
+            nom:this.state.nom,
             prenom:this.state.prenom,
             dateNaissance: this.state.dateNaissance,
             lieuNaissance: this.state.lieuNaissance,
-           */
             groupe:this.state.groupe,
             tel:this.state.tel,
             mail:this.state.mail,
             adresse:this.state.adresse,
         }
-           if (this.refs.userInput) {
-            user.groupe=this.state.promo +this.refs.userInput.value;
-            
+        if (this.refs.userInput) 
+        {
+            user.groupe=this.state.promo +this.refs.userInput.value;            
         }
-        if (this.state.promo!="PROMO"){
-            console.log(user);
-            /*axios.post('http//localhost:5000/students/add',etudiant)
+        if (this.state.promo!=="")
+        {
+                console.log("---"+this.state.promo+"---");
+                console.log(user);
+                /*axios.post('http//localhost:5000/students/add',etudiant)
                 .then(res => console.log(res.data));
-*/
-            window.location="/";}
+                */
+            window.location="/creer";
+        }
+        else 
+        {
+            erreurMessage="----->selectionné le promo"
+            this.setState({
+                errorMessage:erreurMessage
+            })
+        }
     }
     render()
     {
@@ -179,9 +189,12 @@ export default class CreerEtudiant extends Component
                              required className="form-control" 
                             value={this.state.promo}
                             onChange={this.onChangepromo}>
-                              <option>PROMO</option> 
-                             <option>1CS</option>  
-                             <option>2CS</option>
+                            <option>PROMO</option> 
+                            <option>1CP</option>  
+                            <option>2CP</option>  
+                            <option>1CS</option>  
+                            <option>2CS</option>
+                            <option>3CS</option>  
                         </select>
                         <label className="Blabel">Groupe:   </label><br />
                        <select ref="userInput" 
@@ -190,13 +203,18 @@ export default class CreerEtudiant extends Component
                             onChange={this.onChangegroupe}>
                             <option>1</option>
                             <option>2</option>
-                        </select>
-                            
-                                                            
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
+                        </select>              
                    </div> <br />
                    <div>
                        <input  type="submit" value="Create user" className="btn btn-primary"  />
-                     
+                       <label>{this.state.errorMessage}</label>
                    </div>
                </form>
             </div>
