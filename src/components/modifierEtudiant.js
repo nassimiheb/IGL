@@ -29,9 +29,34 @@ export default class CreerEtudiant extends Component
             mail:'',
             promo:'',
             adresse:'',
+            errorMessage:'',
     
         }        
     }
+    componentDidMount(){
+        /* axios.get('http//localhost:5000/students/')
+              .then(response =>{
+                  if (response.data.length>0){
+                       this.setState({
+                           Etudiant: response.data.map( etudiant.matricule),
+                           Etudiant: response.data.map( etudiant.nom),
+                           Etudiant: response.data.map( etudiant.prenom),
+                           Etudiant: response.data.map( etudiant.dateNaissance),
+                           Etudiant: response.data.map( etudiant.lieuNaissance),
+                           Etudiant: response.data.map( etudiant.mail),
+                           Etudiant: response.data.map( etudiant.tel),
+                           Etudiant: response.data.map( etudiant.adresse),
+                           
+                           matricule: response.data[0].matricule,
+                           nom:response.data[0].nom,
+                           prenom:response.data[0].prenom,
+                           dateNaissance: response.data[0].dateNaissance,
+                           lieuNaissance:response.data[0].lieuNaissance,            
+                               
+                      })
+                  }
+              })*/
+      }
     onChangeMatricule(e){
         this.setState({
             matricule:e.target.value
@@ -85,29 +110,37 @@ export default class CreerEtudiant extends Component
     }
     onSubmit(e)
     {
+        let erreurMessage='';
         e.preventDefault();
         const user ={
             matricule:this.state.matricule,
-           /* nom:this.state.nom,
+            nom:this.state.nom,
             prenom:this.state.prenom,
             dateNaissance: this.state.dateNaissance,
             lieuNaissance: this.state.lieuNaissance,
-           */
             groupe:this.state.groupe,
             tel:this.state.tel,
             mail:this.state.mail,
             adresse:this.state.adresse,
         }
-           if (this.refs.userInput) {
-            user.groupe=this.state.promo +this.refs.userInput.value;
-            
+        if (this.refs.userInput) 
+        {
+            user.groupe=this.state.promo +this.refs.userInput.value;            
         }
-        
+        if (this.state.promo!=="")
+        {         
             console.log(user);
-            /*axios.post('http//localhost:5000/students/add',etudiant)
-                .then(res => console.log(res.data));
-*/
-            window.location="/";
+             /*axios.post('http//localhost:5000/students/update/'+this,etudiant)
+                .then(res => console.log(res.data));*/
+            window.location="/affiche";
+        }
+        else 
+        {
+            erreurMessage="----->selectionné le promo"
+            this.setState({
+                errorMessage:erreurMessage
+            })
+        }
     }
     render()
     {
@@ -181,16 +214,28 @@ export default class CreerEtudiant extends Component
                             value={this.state.promo}
                             onChange={this.onChangepromo}>
                               <option>PROMO</option> 
-                             <option>1CS</option>  
-                             <option>2CS</option>
+                              <option>PROMO</option> 
+                              <option>1CP</option>  
+                                <option>2CP</option>  
+                                <option>1CS</option>  
+                                <option>2CS</option>
+                                <option>3CS</option>  
+                        
                         </select>
                         <label className="Blabel">Groupe:   </label><br />
                        <select ref="userInput" 
                              required className="form-control" 
                             value={this.state.groupe}
                             onChange={this.onChangegroupe}>
-                            <option>1</option>
+                             <option>1</option>
                             <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                            <option>6</option>
+                            <option>7</option>
+                            <option>8</option>
+                            <option>9</option>
                         </select>
                             
                                                             
