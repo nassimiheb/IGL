@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../App.css';
@@ -26,7 +26,7 @@ export default class CreerEtudiant extends Component
             lieuNaissance:'',            
             groupe:'',
             tel:'',
-            mail:'',
+            email:'',
             promo:'',
             adresse:'',
             errorMessage:'',
@@ -34,7 +34,7 @@ export default class CreerEtudiant extends Component
     }
     onChangeMatricule(e){
         this.setState({
-            matricule:e.target.value
+            matricule:Number(e.target.value)
         })
     }
     onChangenom(e){
@@ -75,7 +75,7 @@ export default class CreerEtudiant extends Component
     }
     onChangemail(e){
         this.setState({
-            mail:e.target.value
+            email:e.target.value
         });
     }
     onChangeadresse(e){
@@ -87,7 +87,7 @@ export default class CreerEtudiant extends Component
     {
         let erreurMessage='';
         e.preventDefault();
-        const user ={
+        const etudiant ={
             matricule:this.state.matricule,
             nom:this.state.nom,
             prenom:this.state.prenom,
@@ -95,25 +95,25 @@ export default class CreerEtudiant extends Component
             lieuNaissance: this.state.lieuNaissance,
             groupe:this.state.groupe,
             tel:this.state.tel,
-            mail:this.state.mail,
+            email:this.state.email,
             adresse:this.state.adresse,
         }
         if (this.refs.userInput) 
         {
-            user.groupe=this.state.promo +this.refs.userInput.value;            
+            etudiant.groupe=this.state.promo +this.refs.userInput.value;            
         }
         if (this.state.promo!=="")
         {
                 console.log("---"+this.state.promo+"---");
-                console.log(user);
-                /*axios.post('http//localhost:5000/students/add',etudiant)
+                console.log(etudiant);
+                axios.post('http://localhost:5000/students/add',etudiant)
                 .then(res => console.log(res.data));
-                */
-            window.location="/creer";
+                
+            window.location="/create";
         }
         else 
         {
-            erreurMessage="----->selectionné le promo"
+            erreurMessage="----->selectionné la promo"
             this.setState({
                 errorMessage:erreurMessage
             })
@@ -163,6 +163,14 @@ export default class CreerEtudiant extends Component
                             value={this.state.lieuNaissance}
                             onChange={this.onChangelieuNaissance}
                             />                                
+                   </div> <br />
+                   <div>
+                       <label className="Blabel">Adresse:           </label><br />
+                       <input 
+                            type="text" required className="form-control" 
+                            value={this.state.adresse}
+                            onChange={this.onChangeadresse}
+                            />                       
                    </div> <br />
                    <div>
                        <label className="Blabel">Mail:   </label><br />

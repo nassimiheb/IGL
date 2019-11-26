@@ -1,9 +1,9 @@
 import React,{Component} from 'react';
-//import axios from 'axios';
+import axios from 'axios';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import '../App.css';
-export default class CreerEtudiant extends Component
+export default class EditEtudiant extends Component
 {
     constructor(props) {
         super(props);
@@ -26,36 +26,28 @@ export default class CreerEtudiant extends Component
             lieuNaissance:'',            
             groupe:'',
             tel:'',
-            mail:'',
+            email:'',
             promo:'',
             adresse:'',
             errorMessage:'',
-    
         }        
     }
     componentDidMount(){
-        /* axios.get('http//localhost:5000/students/')
+         axios.get('http://localhost:5000/students/one/'+this.props.match.params._id)
               .then(response =>{
-                  if (response.data.length>0){
+                        console.log(response.data)
                        this.setState({
-                           Etudiant: response.data.map( etudiant.matricule),
-                           Etudiant: response.data.map( etudiant.nom),
-                           Etudiant: response.data.map( etudiant.prenom),
-                           Etudiant: response.data.map( etudiant.dateNaissance),
-                           Etudiant: response.data.map( etudiant.lieuNaissance),
-                           Etudiant: response.data.map( etudiant.mail),
-                           Etudiant: response.data.map( etudiant.tel),
-                           Etudiant: response.data.map( etudiant.adresse),
-                           
-                           matricule: response.data[0].matricule,
-                           nom:response.data[0].nom,
-                           prenom:response.data[0].prenom,
-                           dateNaissance: response.data[0].dateNaissance,
-                           lieuNaissance:response.data[0].lieuNaissance,            
-                               
+                        matricule: response.data.matricule,
+                        nom:response.data.nom,
+                        prenom:response.data.prenom,
+                        lieuNaissance:response.data.lieuNaissance,            
+                        dateNaissance : new Date(response.data.dateNaissance),
+                        email :response.data.email,
+                        tel: response.data.tel,
+                        adresse:response.data.adresse
                       })
-                  }
-              })*/
+                  
+              })
       }
     onChangeMatricule(e){
         this.setState({
@@ -100,7 +92,7 @@ export default class CreerEtudiant extends Component
     }
     onChangemail(e){
         this.setState({
-            mail:e.target.value
+            email:e.target.value
         });
     }
     onChangeadresse(e){
@@ -112,7 +104,7 @@ export default class CreerEtudiant extends Component
     {
         let erreurMessage='';
         e.preventDefault();
-        const user ={
+        const etudiant ={
             matricule:this.state.matricule,
             nom:this.state.nom,
             prenom:this.state.prenom,
@@ -120,18 +112,18 @@ export default class CreerEtudiant extends Component
             lieuNaissance: this.state.lieuNaissance,
             groupe:this.state.groupe,
             tel:this.state.tel,
-            mail:this.state.mail,
+            email:this.state.email,
             adresse:this.state.adresse,
         }
         if (this.refs.userInput) 
         {
-            user.groupe=this.state.promo +this.refs.userInput.value;            
+            etudiant.groupe=this.state.promo +this.refs.userInput.value;            
         }
         if (this.state.promo!=="")
         {         
-            console.log(user);
-             /*axios.post('http//localhost:5000/students/update/'+this,etudiant)
-                .then(res => console.log(res.data));*/
+            console.log(etudiant);
+             axios.post('http://localhost:5000/students/update/'+this.props.match.params._id,etudiant)
+                .then(res => console.log(res.data));
             window.location="/affiche";
         }
         else 
@@ -146,7 +138,7 @@ export default class CreerEtudiant extends Component
     {
         return (
             <div className="container" id ="form">
-               <h1>Create a new user</h1>
+               <h1>Modifier etudiant</h1>
                <form onSubmit={this.onSubmit}>
                    <div>
                        <label className="Blabel">Matricule:        </label><br />
@@ -154,7 +146,6 @@ export default class CreerEtudiant extends Component
                             type="text" required className="form-control" 
                             value={this.state.matricule}
                             onChange={this.onChangeMatricule}
-                            value=""
                             />                       
                    </div> <br />
                    <div>
@@ -189,6 +180,14 @@ export default class CreerEtudiant extends Component
                             />                                
                    </div> <br />
                    <div>
+                   <label className="Blabel">Adresse:           </label><br />
+                   <input 
+                        type="text" required className="form-control" 
+                        value={this.state.adresse}
+                        onChange={this.onChangeadresse}
+                        />                       
+               </div> <br />
+                   <div>
                        <label className="Blabel">Mail:   </label><br />
                        <input type='email'                           
                             required 
@@ -213,7 +212,6 @@ export default class CreerEtudiant extends Component
                              required className="form-control" 
                             value={this.state.promo}
                             onChange={this.onChangepromo}>
-                              <option>PROMO</option> 
                               <option>PROMO</option> 
                               <option>1CP</option>  
                                 <option>2CP</option>  
@@ -241,7 +239,7 @@ export default class CreerEtudiant extends Component
                                                             
                    </div> <br />
                    <div>
-                       <input type="submit" value="Create user" className="btn btn-primary"  />
+                       <input type="submit" value="Edit user" className="btn btn-primary"  />
                      
                    </div>
                </form>

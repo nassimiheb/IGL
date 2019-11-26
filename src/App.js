@@ -8,11 +8,11 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 
 import CreateTodo from "./components/createEtudiant";
-import EditTodo from "./components/edit-todo.component";
+//import EditTodo from "./components/edit-todo.component";
 import TodosList from "./components/todos-list.component";
 import Home from  "./components/create-todo.component";
 import Affiche from "./components/afficheEtudiant";
-import Modifier from "./components/edit-todo.component";
+import Modifier from "./components/modifierEtudiant.js";
 import Ajoute from "./components/ajouté"
 
 import { faHome } from "@fortawesome/free-solid-svg-icons";
@@ -99,14 +99,17 @@ class App extends Component {
           </div>
     
           <Route path="/" exact component={TodosList} />
-          <Route path="/edit/:id" component={EditTodo} />
           <Route path="/create" component={CreateTodo} />
           <Route path="/dash" component={Home} />
-          <Route path="/afficher" component={Affiche} />
-          <Route path="/modifier/:id" component={Modifier} />
+          <Route path="/affiche" component={Affiche} />
           <Route path="/done" component={Ajoute} />
+          <Route path="/modifier/:_id" component={Modifier} />
+
           </div>
       </Router>
+                  /*<Route path="/edit/:id" component={EditTodo} />*/
+                /*<Route path="/modifier/:id" component={Modifier} />*/
+
     );
   }
   componentDidMount(){
