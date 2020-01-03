@@ -108,7 +108,7 @@ export default class CreerEtudiant extends Component
                 console.log(etudiant);
                 axios.post('http://localhost:5000/students/add',etudiant)
                 .then(res => console.log(res.data));
-                
+                alert(etudiant.groupe);
             window.location="/create";
         }
         else 
@@ -127,7 +127,8 @@ export default class CreerEtudiant extends Component
                <form onSubmit={this.onSubmit}>
                    <div>
                        <label className="Blabel">Matricule:        </label><br />
-                       <input               
+                       <input
+                            id="Matricule"           
                             type="text" required className="form-control" 
                             value={this.state.matricule}
                             onChange={this.onChangeMatricule}
@@ -135,7 +136,8 @@ export default class CreerEtudiant extends Component
                    </div> <br />
                    <div>
                        <label className="Blabel">Nom:              </label><br />
-                       <input               
+                       <input   
+                            id="Nom"           
                             type="text" required className="form-control" 
                             value={this.state.nom}
                             onChange={this.onChangenom}
@@ -144,6 +146,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Prenom:           </label><br />
                        <input 
+                            id="Prenom"           
                             type="text" required className="form-control" 
                             value={this.state.prenom}
                             onChange={this.onChangeprenom}
@@ -152,6 +155,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Date_Naissance:   </label><br />
                        <DatePicker 
+                            id="Date_Naissance"           
                             selected={this.state.dateNaissance}
                             onChange={this.onChangedateNaissance}
                             />                       
@@ -159,6 +163,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Lieu_Naissance:   </label><br />
                        <input 
+                            id="Lieu_Naissance" 
                             type="text" required className="form-control" 
                             value={this.state.lieuNaissance}
                             onChange={this.onChangelieuNaissance}
@@ -167,6 +172,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Adresse:           </label><br />
                        <input 
+                            id="Adresse" 
                             type="text" required className="form-control" 
                             value={this.state.adresse}
                             onChange={this.onChangeadresse}
@@ -175,6 +181,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Mail:   </label><br />
                        <input type='email'                           
+                            id="Mail" 
                             required 
                             name="email"
                             className="form-control" 
@@ -185,6 +192,7 @@ export default class CreerEtudiant extends Component
                    <div>
                        <label className="Blabel">Téléphone:   </label><br />
                        <input 
+                            id="Tel" 
                             type="text" required className="form-control" 
                             value={this.state.tel}
                             onChange={this.onChangetel}
@@ -193,8 +201,9 @@ export default class CreerEtudiant extends Component
                    
                    <div>
                        <label className="Blabel">Promo:   </label><br />
-                       <select ref="userInput1" 
-                             required className="form-control" 
+                       <select ref="userInput1"
+                        id ="Promo" 
+                            required className="form-control" 
                             value={this.state.promo}
                             onChange={this.onChangepromo}>
                             <option>PROMO</option> 
@@ -206,6 +215,7 @@ export default class CreerEtudiant extends Component
                         </select>
                         <label className="Blabel">Groupe:   </label><br />
                        <select ref="userInput" 
+                       id ="groupe" 
                              required className="form-control" 
                             value={this.state.groupe}
                             onChange={this.onChangegroupe}>
@@ -221,7 +231,7 @@ export default class CreerEtudiant extends Component
                         </select>              
                    </div> <br />
                    <div>
-                       <input  type="submit" value="Create user" className="btn btn-primary"  />
+                       <input id="create" type="submit" value="Create user" className="btn btn-primary"  />
                        <label>{this.state.errorMessage}</label>
                    </div>
                </form>
